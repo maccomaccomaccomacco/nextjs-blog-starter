@@ -1,0 +1,29 @@
+{
+  "kind": "component",
+  "collectionName": "post-headers",
+  "info": {
+    "singularName": "post-header",
+    "pluralName": "post-headers",
+    "displayName": "Post Header"
+  },
+  "options": {},
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "coverImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "date": {
+      "type": "date"
+    },
+    "author": {
+      "type": "component",
+      "repeatable": false,
+      "component": "author"
+    }
+  }
+}

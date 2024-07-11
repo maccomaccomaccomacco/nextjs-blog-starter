@@ -1,0 +1,67 @@
+{
+  "kind": "collectionType",
+  "collectionName": "headers",
+  "info": {
+    "singularName": "header",
+    "pluralName": "headers",
+    "displayName": "Header",
+    "description": "Represents the site header with link"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "default": "Blog",
+      "description": "Text displayed as the main title in the header"
+    },
+    "link": {
+      "type": "string",
+      "required": true,
+      "default": "/",
+      "description": "URL the title points to"
+    },
+    "headingSize": {
+      "type": "enumeration",
+      "enum": [
+        "text-2xl",
+        "text-4xl"
+      ],
+      "required": true,
+      "default": "text-2xl",
+      "description": "CSS class for responsive text size"
+    },
+    "fontWeight": {
+      "type": "string",
+      "default": "font-bold",
+      "description": "CSS class for font weight"
+    },
+    "tracking": {
+      "type": "enumeration",
+      "enum": [
+        "tracking-tight",
+        "tracking-tighter"
+      ],
+      "default": "tracking-tight",
+      "description": "CSS class for letter-spacing"
+    },
+    "marginTop": {
+      "type": "string",
+      "default": "mt-8",
+      "description": "CSS class for margin top"
+    },
+    "marginBottom": {
+      "type": "string",
+      "default": "mb-20",
+      "description": "CSS class for margin bottom"
+    },
+    "hoverEffect": {
+      "type": "string",
+      "default": "hover:underline",
+      "description": "CSS class for hover effects"
+    }
+  }
+}

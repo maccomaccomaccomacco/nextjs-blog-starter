@@ -1,0 +1,20 @@
+{
+  "kind": "component",
+  "collectionName": "components",
+  "info": {
+    "singularName": "post-body",
+    "pluralName": "post-bodies",
+    "displayName": "Post Body",
+    "description": "Component for rendering markdown styled post content"
+  },
+  "options": {
+    "timestamps": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "content": {
+      "type": "richtext",
+      "required": true
+    }
+  }
+}

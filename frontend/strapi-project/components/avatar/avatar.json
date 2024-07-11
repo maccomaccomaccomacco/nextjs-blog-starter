@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_avatars",
+  "info": {
+    "displayName": "Avatar",
+    "singularName": "avatar",
+    "pluralName": "avatars"
+  },
+  "kind": "component",
+  "options": {},
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "picture": {
+      "type": "media",
+      "allowedTypes": [
+        "images"
+      ],
+      "multiple": false
+    }
+  }
+}

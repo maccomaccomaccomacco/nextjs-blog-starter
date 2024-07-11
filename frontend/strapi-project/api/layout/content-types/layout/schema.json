@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "blogs",
+  "info": {
+    "singularName": "blog",
+    "pluralName": "blogs",
+    "displayName": "Blog",
+    "description": "A statically generated blog example using Next.js."
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "description": "The title of the blog."
+    },
+    "description": {
+      "type": "string",
+      "required": true,
+      "description": "A brief summary of the blog content."
+    },
+    "openGraphImages": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "description": "Images for open graph tags."
+    }
+  }
+}

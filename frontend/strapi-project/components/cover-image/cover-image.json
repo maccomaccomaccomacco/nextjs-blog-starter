@@ -1,0 +1,29 @@
+{
+  "kind": "component",
+  "collectionName": "cover_images",
+  "info": {
+    "singularName": "cover-image",
+    "pluralName": "cover-images",
+    "displayName": "Cover Image"
+  },
+  "options": {
+    "timestamps": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "src": {
+      "type": "media",
+      "required": true,
+      "multiple": false
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "unique": true
+    }
+  }
+}

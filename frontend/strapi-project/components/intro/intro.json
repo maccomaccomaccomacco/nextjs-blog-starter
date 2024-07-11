@@ -1,0 +1,32 @@
+{
+  "kind": "component",
+  "collectionName": "intros",
+  "info": {
+    "singularName": "intro",
+    "pluralName": "intros",
+    "displayName": "Intro",
+    "description": "This component represents the introductory section of a blog."
+  },
+  "options": {
+    "timestamps": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "default": "Blog."
+    },
+    "subtitle": {
+      "type": "richtext",
+      "required": true,
+      "default": "A statically generated blog example using Next.js and CMS_NAME."
+    },
+    "link": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.link",
+      "targetAttribute": "url"
+    }
+  }
+}

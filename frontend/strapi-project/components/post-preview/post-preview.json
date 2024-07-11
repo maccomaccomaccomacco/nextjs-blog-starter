@@ -1,0 +1,41 @@
+{
+  "kind": "component",
+  "collectionName": "components_post_previews",
+  "info": {
+    "singularName": "post-preview",
+    "pluralName": "post-previews",
+    "displayName": "Post Preview",
+    "description": ""
+  },
+  "options": {},
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "coverImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "date": {
+      "type": "date",
+      "required": true
+    },
+    "excerpt": {
+      "type": "richtext",
+      "required": true
+    },
+    "author": {
+      "type": "component",
+      "repeatable": false,
+      "component": "author"
+    },
+    "slug": {
+      "type": "uid",
+      "required": true,
+      "targetField": "title"
+    }
+  }
+}

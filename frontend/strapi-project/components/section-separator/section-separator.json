@@ -1,0 +1,19 @@
+{
+  "kind": "component",
+  "collectionName": "sectionseparators",
+  "info": {
+    "singularName": "section-separator",
+    "pluralName": "section-separators",
+    "displayName": "Section Separator"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "className": {
+      "type": "string",
+      "default": "border-neutral-200 mt-28 mb-24"
+    }
+  }
+}
