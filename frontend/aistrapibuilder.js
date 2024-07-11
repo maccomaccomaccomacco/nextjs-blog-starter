@@ -5,20 +5,24 @@ const OpenAIApi = require('openai');
 
 // Initialize OpenAI API client using environment variable for API key
 const openai = new OpenAIApi({
-  apiKey: process.env.OPENAI_API_KEY
+  apiKey: process.env.OPENAI_API_KEY,
 });
 
-// Function to recursively read files in a directory
+// Function to recursively read files in a directory and categorize them
 const readFilesRecursively = (dir) => {
-  let results = [];
+  let results = { components: [], pages: [] };
   const list = fs.readdirSync(dir);
   list.forEach((file) => {
     const filePath = path.resolve(dir, file);
     const stat = fs.statSync(filePath);
     if (stat && stat.isDirectory()) {
-      results = results.concat(readFilesRecursively(filePath));
+      const subdirResults = readFilesRecursively(filePath);
+      results.components = results.components.concat(subdirResults.components);
+      results.pages = results.pages.concat(subdirResults.pages);
+    } else if (dir.includes('_components')) {
+      results.components.push(filePath);
     } else {
-      results.push(filePath);
+      results.pages.push(filePath);
     }
   });
   return results;
@@ -35,41 +39,44 @@ const prepareOutputFolder = (outputPath) => {
 };
 
 // Function to analyze codebase using OpenAI API
-const analyzeCodebase = async (codebase) => {
-  console.log('Analyzing the entire codebase...');
+const analyzeCodebase = async (files, role) => {
+  console.log(`Analyzing ${role}...`);
   try {
+    const combinedCode = files
+      .map((file) => fs.readFileSync(file, 'utf8'))
+      .join('\n');
     const response = await openai.chat.completions.create({
       model: 'gpt-4-turbo',
       messages: [
         {
           role: 'system',
-          content:
-            'You are an assistant that generates Strapi content type configurations from given JavaScript or TypeScript code. Follow the official Strapi content-type format closely.',
+          content: `You are an assistant that generates Strapi ${role} configurations from given JavaScript or TypeScript code. Ensure to include details such as 'kind', 'collectionName', 'info', 'singularName', 'pluralName', 'displayName', 'options', 'pluginOptions', and detailed attributes including types, defaults, and relationships following Strapi's version 4 format.`,
         },
         {
           role: 'user',
-          content: `Here is the combined code from the project:\n\n${codebase}\n\nGenerate the corresponding Strapi content type and component configurations in JSON format. Focus on the structure and required fields for typical Strapi configurations. Please provide the raw JSON only, without any additional formatting or annotations like markdown or comments.`,
+          content: `Here is the combined code for ${role}:\n\n${combinedCode}\n\nGenerate the corresponding Strapi ${role} configurations in JSON format, adhering to the official Strapi content-type structure and specifications. Please focus on completeness and accuracy of the schema. Do not include any comments or code blocks.`,
         },
       ],
       max_tokens: 800,
     });
 
-    // Check if response has choices and text within the message
     if (
       response.choices &&
       response.choices[0] &&
       response.choices[0].message &&
       response.choices[0].message.content
     ) {
-      const outputText = response.choices[0].message.content;
-      // Remove any unwanted markdown formatting if still present
-      const cleanOutput = outputText.replace(/```json|```/g, '').trim();
-      return cleanOutput;
+      let outputText = response.choices[0].message.content;
+
+      // Remove any unwanted markdown formatting or additional annotations
+      outputText = outputText.replace(/```json|```/g, '').trim(); // Remove markdown code blocks
+      return outputText;
     } else {
       throw new Error('No valid response or missing content from API');
     }
   } catch (error) {
-    console.error(`Error analyzing codebase:`, error);
+    console.error(`Error analyzing ${role}:`, error);
+    console.error('Faulty JSON:', error.message);
     throw error;
   }
 };
@@ -80,21 +87,27 @@ const main = async () => {
   prepareOutputFolder(outputPath);
 
   const nextjsAppFolder = path.resolve(__dirname, './src/app');
-  const files = readFilesRecursively(nextjsAppFolder);
+  const { components, pages } = readFilesRecursively(nextjsAppFolder);
 
-  let combinedCode = '';
-  files.forEach((file) => {
-    const content = fs.readFileSync(file, 'utf8');
-    combinedCode += `\n\n// File: ${file}\n\n${content}`;
-  });
+  const componentConfigurations = await analyzeCodebase(
+    components,
+    'components'
+  );
+  fs.writeFileSync(
+    `${outputPath}/strapi_components.json`,
+    componentConfigurations
+  );
+  console.log('Components configuration generated.');
 
-  try {
-    const analysisResult = await analyzeCodebase(combinedCode);
-    fs.writeFileSync(`${outputPath}/strapi_configurations.json`, analysisResult);
-    console.log('Output generated: strapi_configurations.json');
-  } catch (error) {
-    console.error('Failed to generate output:', error);
-  }
+  const contentTypeConfigurations = await analyzeCodebase(
+    pages,
+    'content types'
+  );
+  fs.writeFileSync(
+    `${outputPath}/strapi_content_types.json`,
+    contentTypeConfigurations
+  );
+  console.log('Content types configuration generated.');
 
   console.log('Analysis complete. Check the output folder for results.');
 };
