@@ -1,9 +1,10 @@
+require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
 const OpenAIApi = require('openai');
 
 // Initialize OpenAI API client using environment variable for API key
-const openai = new OpenAIApi({ apiKey: '' });
+const openai = new OpenAIApi({ apiKey: process.env.OPENAI_API_KEY });
 
 // Function to recursively read files in a directory
 const readFilesRecursively = (dir) => {
@@ -37,6 +38,9 @@ const analyzeFiles = async (files) => {
   for (const file of files) {
     const content = fs.readFileSync(file, 'utf8');
     const cleanFileName = path.basename(file).replace(path.extname(file), '');
+    const isComponent = file.includes('component');
+    console.log(cleanFileName, isComponent)
+
     console.log(`Analyzing file: ${file}`);
     try {
       const response = await openai.chat.completions.create({
@@ -49,7 +53,9 @@ const analyzeFiles = async (files) => {
           },
           {
             role: 'user',
-            content: `Here is the code:\n\n${content}\n\nGenerate the corresponding Strapi content type configurations in JSON format. Focus on the structure and required fields for a typical Strapi configuration. Please provide the raw JSON only, without any additional formatting or annotations like markdown or comments.`,
+            content: `Here is the code:\n\n${content}\n\nGenerate the corresponding Strapi ${
+              isComponent ? 'component' : 'content type'
+            } configurations in JSON format. Focus on the structure and required fields for a typical Strapi configuration. Please provide the raw JSON only, without any additional formatting or annotations like markdown or comments.`,
           },
         ],
         max_tokens: 800,
