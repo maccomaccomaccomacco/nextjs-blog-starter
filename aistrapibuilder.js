@@ -3,7 +3,7 @@ const path = require('path');
 const OpenAIApi = require('openai');
 
 // Initialize OpenAI API client using environment variable for API key
-const openai = new OpenAIApi({ apiKey: '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' });
+const openai = new OpenAIApi({ apiKey: '' });
 
 // Function to recursively read files in a directory
 const readFilesRecursively = (dir) => {
