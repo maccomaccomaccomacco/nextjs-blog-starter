@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "containers",
+  "info": {
+    "singularName": "container",
+    "pluralName": "containers",
+    "displayName": "Container",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "children": {
+      "type": "richtext",
+      "default": null
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "kind": "component",
+  "collectionName": "alerts",
+  "info": {
+    "singularName": "alert",
+    "pluralName": "alerts",
+    "displayName": "Alert",
+    "description": "A component to display a preview or a redirect message with a link."
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "preview": {
+      "type": "boolean",
+      "default": false
+    },
+    "message": {
+      "type": "richtext",
+      "default": "This page is a preview. <a href='/api/exit-preview'>Click here</a> to exit preview mode."
+    },
+    "githubLink": {
+      "type": "component",
+      "repeatable": false,
+      "component": "general.link",
+      "default": {
+        "url": "https://github.com/placeholder/path",
+        "text": "available on GitHub"
+      }
+    }
+  }
+}

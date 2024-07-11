@@ -1,0 +1,153 @@
+{
+  "components": [
+    {
+      "collectionName": "alerts",
+      "info": {
+        "displayName": "Alert",
+        "singularName": "alert",
+        "pluralName": "alerts"
+      },
+      "options": {},
+      "pluginOptions": {},
+      "attributes": {
+        "preview": {
+          "type": "boolean"
+        },
+        "messagePreview": {
+          "type": "richtext"
+        },
+        "messageNonPreview": {
+          "type": "richtext"
+        }
+      }
+    },
+    {
+      "collectionName": "avatars",
+      "info": {
+        "displayName": "Avatar",
+        "singularName": "avatar",
+        "pluralName": "avatars"
+      },
+      "options": {},
+      "pluginOptions": {},
+      "attributes": {
+        "name": {
+          "type": "string"
+        },
+        "picture": {
+          "type": "media",
+          "multiple": false,
+          "required": true
+        }
+      }
+    },
+    {
+      "collectionName": "cover_images",
+      "info": {
+        "displayName": "Cover Image",
+        "singularName": "cover-image",
+        "pluralName": "cover-images"
+      },
+      "options": {},
+      "pluginOptions": {},
+      "attributes": {
+        "title": {
+          "type": "string"
+        },
+        "src": {
+          "type": "media",
+          "multiple": false,
+          "required": true
+        },
+        "slug": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "collectionName": "date_formatters",
+      "info": {
+        "displayName": "Date Formatter",
+        "singularName": "date-formatter",
+        "pluralName": "date-formatters"
+      },
+      "options": {},
+      "pluginOptions": {},
+      "attributes": {
+        "dateString": {
+          "type": "date"
+        }
+      }
+    },
+    {
+      "collectionName": "hero_posts",
+      "info": {
+        "displayName": "Hero Post",
+        "singularName": "hero-post",
+        "pluralName": "hero-posts"
+      },
+      "options": {},
+      "pluginOptions": {},
+      "attributes": {
+        "title": {
+          "type": "string"
+        },
+        "coverImage": {
+          "component": "components.cover-image"
+        },
+        "date": {
+          "component": "components.date-formatter"
+        },
+        "excerpt": {
+          "type": "text"
+        },
+        "author": {
+          "component": "components.avatar"
+        },
+        "slug": {
+          "type": "uid"
+        }
+      }
+    },
+    {
+      "collectionName": "post_previews",
+      "info": {
+        "displayName": "Post Preview",
+        "singularName": "post-preview",
+        "pluralName": "post-previews"
+      },
+      "options": {},
+      "pluginOptions": {},
+      "attributes": {
+        "title": {
+          "type": "string"
+        },
+        "coverImage": {
+          "component": "components.cover-image"
+        },
+        "date": {
+          "component": "components.date-formatter"
+        },
+        "excerpt": {
+          "type": "text"
+        },
+        "author": {
+          "component": "components.avatar"
+        },
+        "slug": {
+          "type": "uid"
+        }
+      }
+    },
+    {
+      "collectionName": "post_titles",
+      "info": {
+        "displayName": "Post Title",
+        "singularName": "post-title",
+        "pluralName": "post-titles"
+      },
+      "options": {},
+      "pluginOptions": {},
+      "attributes": {
+        "title": {
+          "type": "string

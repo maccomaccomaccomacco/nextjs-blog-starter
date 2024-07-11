@@ -1,0 +1,67 @@
+{
+  "kind": "component",
+  "collectionName": "footers",
+  "info": {
+    "singularName": "footer",
+    "pluralName": "footers",
+    "displayName": "Footer",
+    "description": "This component represents the footer section of a webpage, including links and documentation."
+  },
+  "options": {
+    "timestamps": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "backgroundColor": {
+      "type": "string",
+      "default": "bg-neutral-50"
+    },
+    "borderColor": {
+      "type": "string",
+      "default": "border-neutral-200"
+    },
+    "textColor": {
+      "type": "string",
+      "default": "dark:bg-slate-800"
+    },
+    "title": {
+      "type": "string",
+      "default": "Statically Generated with Next.js."
+    },
+    "titleSize": {
+      "type": "string",
+      "default": "text-4xl lg:text-[2.5rem]"
+    },
+    "titleWeight": {
+      "type": "string",
+      "default": "font-bold"
+    },
+    "alignment": {
+      "type": "string",
+      "default": "text-center lg:text-left"
+    },
+    "readDocumentationButton": {
+      "type": "json",
+      "default": {
+        "text": "Read Documentation",
+        "backgroundColor": "bg-black",
+        "hoverBackgroundColor": "hover:bg-white",
+        "hoverTextColor": "hover:text-black",
+        "border": "border-black",
+        "textColor": "text-white",
+        "textWeight": "font-bold",
+        "transition": "duration-200 transition-colors",
+        "url": "https://nextjs.org/docs/app/building-your-application/routing/layouts-and-templates"
+      }
+    },
+    "viewGithubButton": {
+      "type": "json",
+      "default": {
+        "text": "View on GitHub",
+        "textWeight": "font-bold",
+        "hoverStyle": "hover:underline",
+        "url": "https://github.com/vercel/next.js/tree/canary/examples/${EXAMPLE_PATH}"
+      }
+    }
+  }
+}

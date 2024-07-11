@@ -1,0 +1,20 @@
+{
+  "kind": "component",
+  "collectionName": "date_formatters",
+  "info": {
+    "singularName": "date-formatter",
+    "pluralName": "date-formatters",
+    "displayName": "Date Formatter",
+    "description": "Component to format date strings"
+  },
+  "options": {
+    "timestamps": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "dateString": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

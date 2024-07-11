@@ -1,0 +1,30 @@
+{
+  "kind": "component",
+  "collectionName": "components",
+  "info": {
+    "singularName": "post-title",
+    "pluralName": "post-titles",
+    "displayName": "Post Title",
+    "description": "A component for rendering the title of a post with large and responsive font sizes."
+  },
+  "options": {
+    "timestamps": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": false
+    }
+  },
+  "attributes": {
+    "children": {
+      "type": "richtext",
+      "required": false,
+      "default": "",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    }
+  }
+}
