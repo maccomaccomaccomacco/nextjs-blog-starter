@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "avatars",
+  "info": {
+    "singularName": "avatar",
+    "pluralName": "avatars",
+    "displayName": "Avatar"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "picture": {
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}

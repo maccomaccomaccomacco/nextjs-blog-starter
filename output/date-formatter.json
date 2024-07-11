@@ -1,0 +1,17 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dateformatters",
+  "info": {
+    "name": "dateformatter",
+    "description": "A content type for formatting dates"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "dateString": {
+      "type": "datetime",
+      "required": true
+    }
+  }
+}

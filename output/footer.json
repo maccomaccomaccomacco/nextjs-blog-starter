@@ -1,0 +1,89 @@
+{
+  "kind": "collectionType",
+  "collectionName": "footers",
+  "info": {
+    "name": "footer",
+    "description": "Reusable footer sections for the website"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "backgroundColor": {
+      "type": "string",
+      "default": "bg-neutral-50"
+    },
+    "borderColor": {
+      "type": "string",
+      "default": "border-neutral-200"
+    },
+    "darkModeBackground": {
+      "type": "string",
+      "default": "dark:bg-slate-800"
+    },
+    "title": {
+      "type": "string",
+      "default": "Statically Generated with Next.js."
+    },
+    "titleSize": {
+      "type": "string",
+      "default": "text-4xl lg:text-[2.5rem]"
+    },
+    "titleFontWeight": {
+      "type": "string",
+      "default": "font-bold"
+    },
+    "titleAlignment": {
+      "type": "string",
+      "default": "text-center lg:text-left"
+    },
+    "buttonLinks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "button-links.button-link"
+    }
+  },
+  "components": {
+    "button-links": {
+      "button-link": {
+        "info": {
+          "name": "button-link",
+          "description": "Links in the footer with styling options"
+        },
+        "options": {},
+        "attributes": {
+          "url": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "backgroundColor": {
+            "type": "string",
+            "default": "bg-black"
+          },
+          "hoverBackgroundColor": {
+            "type": "string",
+            "default": "hover:bg-white"
+          },
+          "textColor": {
+            "type": "string",
+            "default": "text-white"
+          },
+          "hoverTextColor": {
+            "type": "string",
+            "default": "hover:text-black"
+          },
+          "border": {
+            "type": "string",
+            "default": "border border-black"
+          },
+          "fontWeight": {
+"            "type": "string",
+            "default": "font-bold"
+          }
+        }
+      }
+    }
+  }
+}

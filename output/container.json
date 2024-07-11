@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "containers",
+  "info": {
+    "name": "container",
+    "description": "A generic container component for React to encapsulate children components"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "children": {
+      "type": "richtext",
+      "allowedTypes": ["components", "dynamiczones"]
+    }
+  }
+}

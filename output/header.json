@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "headers",
+  "info": {
+    "name": "header",
+    "description": "Represent a header that contains link to the homepage."
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "link": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::users-permissions.user",
+      "required": false
+    },
+    "className": {
+      "type": "string",
+      "required": false
+    }
+  }
+}
